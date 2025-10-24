@@ -84,7 +84,7 @@ func TestRover(t *testing.T) {
 		}
 	})
 
-	t.Run("gris should have obstacles", func(t *testing.T) {
+	t.Run("grid should have obstacles", func(t *testing.T) {
 		grid := Grid{Size: Coordinates{X: 5, Y: 5}}
 		rover := NewRover(2, 2, North, grid)
 
@@ -95,7 +95,6 @@ func TestRover(t *testing.T) {
 
 		rover.Grid.Obstacles = obstacles
 
-
 		if len(rover.Grid.Obstacles) != 2 {
 			t.Errorf("expected grid to have 2 obstacles, got %d", len(rover.Grid.Obstacles))
 		}
@@ -105,7 +104,45 @@ func TestRover(t *testing.T) {
 				t.Errorf("expected obstacle %d to be %v, got %v", i, o.Position, rover.Grid.Obstacles[i].Position)
 			}
 		}
+	})
+
+	t.Run("rover should stop at obstacle", func(t *testing.T) {
+		grid := Grid{Size: Coordinates{X: 5, Y: 5}}
+		rover := NewRover(2, 2, North, grid)
+
+		obstacles := []Obstacle{
+			{Position: Coordinates{X: 2, Y: 1}},
+			{Position: Coordinates{X: 3, Y: 3}},
+		}
+
+		rover.Grid.Obstacles = obstacles
+
+		position := rover.Execute("LFRFRFFFF")
+
+		if position != "1:1:E" {
+			t.Errorf("expected position 1:1:E, got %s", position)
+		}
 
 	})
 
+	t.Run("should print grid", func(t *testing.T) {
+		grid := Grid{Size: Coordinates{X: 5, Y: 5}}
+		rover := NewRover(2, 2, North, grid)
+
+		obstacles := []Obstacle{
+			{Position: Coordinates{X: 2, Y: 1}},
+			{Position: Coordinates{X: 3, Y: 3}},
+		}
+
+		rover.Grid.Obstacles = obstacles
+
+		rover.Execute("LFFBRRR")
+
+		expected := "-----\n--X--\n-v---\n---X-\n-----"
+		actual := rover.Print()
+
+		if actual != expected {
+			t.Errorf("expected grid to be \n%s\n, got \n%s", expected, actual)
+		}
+	})
 }

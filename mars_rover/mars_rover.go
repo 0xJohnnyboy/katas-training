@@ -40,12 +40,12 @@ const (
 )
 
 type Grid struct {
-	Size Coordinates
+	Size      Coordinates
 	Obstacles []Obstacle
 }
 
 type Rover struct {
-	Position Coordinates
+	Position  Coordinates
 	Direction Direction
 	Grid      Grid
 }
@@ -54,20 +54,69 @@ type Obstacle struct {
 	Position Coordinates
 }
 
+func (g Grid) HasObstacle(p Coordinates) bool {
+	for _, o := range g.Obstacles {
+		if o.Position.Equals(p) {
+			return true
+		}
+	}
+	return false
+}
 
 func NewRover(x int, y int, d Direction, grid Grid) *Rover {
 	return &Rover{Position: Coordinates{X: x, Y: y}, Direction: d, Grid: grid}
 }
 
-
 func (r *Rover) String() string {
 	return fmt.Sprintf("%d:%d:%s", r.Position.X, r.Position.Y, r.Direction.String())
+}
+
+func (r *Rover) Print() string {
+	string := ""
+	obstacle := "X"
+	empty := "-"
+	roverFacingNorth := "^"
+	roverFacingEast := ">"
+	roverFacingSouth := "v"
+	roverFacingWest := "<"
+
+	for y := range r.Grid.Size.Y {
+		for x := range r.Grid.Size.X {
+			if r.Grid.HasObstacle(Coordinates{X: x, Y: y}) {
+				string += obstacle
+				continue
+			}
+
+			if x == r.Position.X && y == r.Position.Y {
+				switch r.Direction {
+				case North:
+					string += roverFacingNorth
+				case East:
+					string += roverFacingEast
+				case South:
+					string += roverFacingSouth
+				case West:
+					string += roverFacingWest
+				}
+				continue
+			}
+
+			string += empty
+		}
+
+		if y < r.Grid.Size.Y-1 {
+			string += "\n"
+		}
+	}
+
+	return string
 }
 
 func (r *Rover) Execute(command string) string {
 	cmdSlice := []rune(command)
 
 	for _, cmd := range cmdSlice {
+		state := r.Position
 		switch cmd {
 		case 'L':
 			r.Direction = r.Direction.TurnLeft()
@@ -77,6 +126,11 @@ func (r *Rover) Execute(command string) string {
 			r.Move(Forward)
 		case 'B':
 			r.Move(Backward)
+		}
+
+		if r.Grid.HasObstacle(r.Position) {
+			r.Position = state
+			break
 		}
 	}
 
