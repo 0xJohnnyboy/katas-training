@@ -4,63 +4,10 @@ import (
 	"fmt"
 )
 
-type Coordinates struct {
-	X int
-	Y int
-}
-
-func (c Coordinates) Equals(other Coordinates) bool {
-	return c.X == other.X && c.Y == other.Y
-}
-
-type Direction int
-
-const (
-	North Direction = iota
-	East
-	South
-	West
-)
-
-func (d Direction) String() string {
-	return [...]string{"N", "E", "S", "W"}[d]
-}
-
-func (d Direction) TurnLeft() Direction {
-	return Direction((int(d) + 3) % 4)
-}
-
-func (d Direction) TurnRight() Direction {
-	return Direction((int(d) + 1) % 4)
-}
-
-const (
-	Backward int = -1
-	Forward  int = 1
-)
-
-type Grid struct {
-	Size      Coordinates
-	Obstacles []Obstacle
-}
-
 type Rover struct {
 	Position  Coordinates
 	Direction Direction
 	Grid      Grid
-}
-
-type Obstacle struct {
-	Position Coordinates
-}
-
-func (g Grid) HasObstacle(p Coordinates) bool {
-	for _, o := range g.Obstacles {
-		if o.Position.Equals(p) {
-			return true
-		}
-	}
-	return false
 }
 
 func NewRover(x int, y int, d Direction, grid Grid) *Rover {
@@ -72,13 +19,16 @@ func (r *Rover) String() string {
 }
 
 func (r *Rover) Print() string {
+	var symbols = map[Direction]string{
+		North: "^",
+		East:  ">",
+		South: "v",
+		West:  "<",
+	}
+
 	string := ""
 	obstacle := "X"
 	empty := "-"
-	roverFacingNorth := "^"
-	roverFacingEast := ">"
-	roverFacingSouth := "v"
-	roverFacingWest := "<"
 
 	for y := range r.Grid.Size.Y {
 		for x := range r.Grid.Size.X {
@@ -88,16 +38,7 @@ func (r *Rover) Print() string {
 			}
 
 			if x == r.Position.X && y == r.Position.Y {
-				switch r.Direction {
-				case North:
-					string += roverFacingNorth
-				case East:
-					string += roverFacingEast
-				case South:
-					string += roverFacingSouth
-				case West:
-					string += roverFacingWest
-				}
+				string += symbols[r.Direction]
 				continue
 			}
 
@@ -117,16 +58,14 @@ func (r *Rover) Execute(command string) string {
 
 	for _, cmd := range cmdSlice {
 		state := r.Position
-		switch cmd {
-		case 'L':
-			r.Direction = r.Direction.TurnLeft()
-		case 'R':
-			r.Direction = r.Direction.TurnRight()
-		case 'F':
-			r.Move(Forward)
-		case 'B':
-			r.Move(Backward)
+		actionsMap := map[rune]func(){
+			'L': func() { r.Direction = r.Direction.TurnLeft() },
+			'R': func() { r.Direction = r.Direction.TurnRight() },
+			'F': func() { r.move(Forward) },
+			'B': func() { r.move(Backward) },
 		}
+
+		actionsMap[cmd]()
 
 		if r.Grid.HasObstacle(r.Position) {
 			r.Position = state
@@ -134,25 +73,23 @@ func (r *Rover) Execute(command string) string {
 		}
 	}
 
-	r.wrap()
+	r.wrapCoordinates()
 
 	return r.String()
 }
 
-func (r *Rover) wrap() {
+func (r *Rover) wrapCoordinates() {
 	r.Position.Y = ((r.Position.Y % r.Grid.Size.Y) + r.Grid.Size.Y) % r.Grid.Size.Y
 	r.Position.X = ((r.Position.X % r.Grid.Size.X) + r.Grid.Size.X) % r.Grid.Size.X
 }
 
-func (r *Rover) Move(amount int) {
-	switch r.Direction {
-	case North:
-		r.Position.Y -= amount
-	case East:
-		r.Position.X += amount
-	case South:
-		r.Position.Y += amount
-	case West:
-		r.Position.X -= amount
+func (r *Rover) move(amount int) {
+	moveMap := map[Direction]func(int){
+		North: func(amount int) { r.Position.Y -= amount },
+		East:  func(amount int) { r.Position.X += amount },
+		South: func(amount int) { r.Position.Y += amount },
+		West:  func(amount int) { r.Position.X -= amount },
 	}
+
+	moveMap[r.Direction](amount)
 }
