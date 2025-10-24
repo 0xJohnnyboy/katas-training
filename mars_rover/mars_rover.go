@@ -13,14 +13,27 @@ const (
 	West
 )
 
+const (
+	Backward int = -1
+	Forward  int = 1
+)
+
+type Grid struct {
+	X int
+	Y int
+}
+
 type Rover struct {
 	X         int
 	Y         int
 	Direction Direction
+	Grid      Grid
 }
 
-func NewRover(x int, y int, d Direction) *Rover {
-	return &Rover{X: x, Y: y, Direction: d}
+func NewRover(x int, y int, d Direction, xGrid int, yGrid int) *Rover {
+	grid := Grid{X: xGrid, Y: yGrid}
+
+	return &Rover{X: x, Y: y, Direction: d, Grid: grid}
 }
 
 func (d Direction) String() string {
@@ -49,13 +62,20 @@ func (r *Rover) Execute(command string) string {
 		case 'R':
 			r.Direction = r.Direction.TurnRight()
 		case 'F':
-			r.Move(1)
+			r.Move(Forward)
 		case 'B':
-			r.Move(-1)
+			r.Move(Backward)
 		}
 	}
 
+	r.wrap()
+
 	return r.String()
+}
+
+func (r *Rover) wrap() {
+	r.X = ((r.X % r.Grid.X) + r.Grid.X) % r.Grid.X
+	r.Y = ((r.Y % r.Grid.Y) + r.Grid.Y) % r.Grid.Y
 }
 
 func (r *Rover) Move(amount int) {

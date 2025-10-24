@@ -6,7 +6,7 @@ import (
 
 func TestRover(t *testing.T) {
 	t.Run("creates a rover with initial position", func(t *testing.T) {
-		rover := NewRover(2, 3, North)
+		rover := NewRover(2, 3, North, 5, 5)
 
 		if rover.X != 2 || rover.Y != 3 {
 			t.Errorf("expected position (2, 3), got (%d, %d)", rover.X, rover.Y)
@@ -18,14 +18,14 @@ func TestRover(t *testing.T) {
 	})
 
 	t.Run("rover should return its position", func(t *testing.T) {
-		rover := NewRover(2, 4, West)
+		rover := NewRover(2, 4, West, 5, 5)
 		if rover.String() != "2:4:W" {
 			t.Errorf("expected position 2:4:W, got %s", rover.String())
 		}
 	})
 
 	t.Run("rover facing north should face west", func(t *testing.T) {
-		rover := NewRover(0, 0, North)
+		rover := NewRover(0, 0, North, 5, 5)
 
 		rover.Execute("L")
 
@@ -35,7 +35,7 @@ func TestRover(t *testing.T) {
 	})
 
 	t.Run("rover facing north should face north", func(t *testing.T) {
-		rover := NewRover(0, 0, North)
+		rover := NewRover(0, 0, North, 5, 5)
 
 		rover.Execute("LRLR")
 
@@ -45,7 +45,7 @@ func TestRover(t *testing.T) {
 	})
 
 	t.Run("rover should move forward", func(t *testing.T) {
-		rover := NewRover(2, 2, North)
+		rover := NewRover(2, 2, North, 5, 5)
 
 		position := rover.Execute("F")
 
@@ -55,9 +55,19 @@ func TestRover(t *testing.T) {
 	})
 
 	t.Run("rover should move", func(t *testing.T) {
-		rover := NewRover(2, 2, North)
+		rover := NewRover(2, 2, North, 5, 5)
 
 		position := rover.Execute("FLFRFRFFBRFFLL")
+
+		if position != "2:2:N" {
+			t.Errorf("expected position 2:2:N, got %s", position)
+		}
+	})
+
+	t.Run("rover should move with wrapping", func(t *testing.T) {
+		rover := NewRover(2, 2, North, 5, 5)
+
+		position := rover.Execute("LFRFFFRFLFF")
 
 		if position != "2:2:N" {
 			t.Errorf("expected position 2:2:N, got %s", position)
