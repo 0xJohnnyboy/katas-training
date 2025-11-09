@@ -139,7 +139,7 @@ func TestRover(t *testing.T) {
 		rover.Execute("LFFBRRR")
 
 		expected := "-----\n--X--\n-v---\n---X-\n-----"
-		actual := rover.Print()
+		actual := rover.ToString()
 
 		if actual != expected {
 			t.Errorf("expected grid to be \n%s\n, got \n%s", expected, actual)

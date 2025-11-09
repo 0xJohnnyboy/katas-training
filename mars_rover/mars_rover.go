@@ -18,7 +18,7 @@ func (r *Rover) String() string {
 	return fmt.Sprintf("%d:%d:%s", r.Position.X, r.Position.Y, r.Direction.String())
 }
 
-func (r *Rover) Print() string {
+func (r *Rover) ToString() string {
 	var symbols = map[Direction]string{
 		North: "^",
 		East:  ">",
@@ -26,31 +26,31 @@ func (r *Rover) Print() string {
 		West:  "<",
 	}
 
-	string := ""
+	str := ""
 	obstacle := "X"
 	empty := "-"
 
 	for y := range r.Grid.Size.Y {
 		for x := range r.Grid.Size.X {
 			if r.Grid.HasObstacle(Coordinates{X: x, Y: y}) {
-				string += obstacle
+				str += obstacle
 				continue
 			}
 
 			if x == r.Position.X && y == r.Position.Y {
-				string += symbols[r.Direction]
+				str += symbols[r.Direction]
 				continue
 			}
 
-			string += empty
+			str += empty
 		}
 
 		if y < r.Grid.Size.Y-1 {
-			string += "\n"
+			str += "\n"
 		}
 	}
 
-	return string
+	return str
 }
 
 func (r *Rover) Execute(command string) string {
