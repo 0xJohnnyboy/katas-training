@@ -1,155 +1,38 @@
-# Guide d'Entraînement Intensif - Katas Shodo
+# Katas de Programmation
 
-> Programme intensif de préparation aux entretiens techniques Shodo Lille
-> Focus : Go, TDD, Software Craftsmanship
+Collection de katas classiques du Software Craftsmanship avec règles et cas de test.
 
-## 🎯 Objectif
+## Katas disponibles
 
-Se préparer efficacement aux katas techniques Shodo en 3-5 jours, avec une approche progressive macro-mezzo-micro.
+### Navigation et Grilles 2D
 
-## 📋 Structure du Programme
+- **[Mars Rover](./katas/mars_rover.md)** - Déplacer un rover sur une grille avec commandes, wrapping et obstacles
+- **[Game of Life](./katas/game_of_life.md)** - Automate cellulaire de Conway avec patterns classiques
+- **[Sailboat](./katas/sailboat.md)** - Navigation d'un bateau selon la direction du vent
+- **[Pac-Man](./katas/pacman.md)** - Mécanique de jeu avec fantômes et comportements
 
-- **Durée totale** : 3-5 jours (adaptable selon disponibilité)
-- **Approche** : Macro → Mezzo → Micro
-- **Langage** : Go
-- **Focus** : TDD, Clean Code, Software Craftsmanship
+### Jeux de Plateau
 
-## 🗓️ Plan de Formation
+- **[Reversi](./katas/reversi.md)** - Othello avec placement et captures
+- **[Klondike](./katas/klondike.md)** - Solitaire avec tableau, fondations et pioche
 
-### [Jour 1 : MACRO - Comprendre le Contexte](./day1.md)
-**Objectif** : Comprendre la philosophie, identifier les patterns communs
-- Philosophie Software Craftsmanship chez Shodo
-- Tour d'horizon des katas principaux
-- Patterns récurrents
-- Ce qui est évalué en entretien
-- **Durée** : 3-4h
+### Logique et Calcul
 
-### [Jour 2 : MEZZO - Patterns & Méthodologie](./day2.md)
-**Objectif** : Maîtriser les patterns techniques et la méthodologie TDD
-- Patterns techniques (grilles 2D, state machines, commands)
-- TDD en Go (testing, testify, table-driven tests)
-- Comment démarrer un kata
-- Premiers katas guidés (String Calculator, Tennis)
-- **Durée** : 4-6h
+- **[String Calculator](./katas/string_calculator.md)** - Parser de chaînes avec règles progressives
+- **[Tennis](./katas/tennis.md)** - Système de score avec deuce et advantage
+- **[Supermarket Checkout](./katas/supermarket_checkout.md)** - Caisse avec prix et offres spéciales
 
-### [Jours 3-4 : MICRO - Pratique Intensive](./day3_4.md)
-**Objectif** : Pratiquer, répéter, automatiser
-- Mars Rover (prioritaire)
-- Game of Life
-- Sailboat
-- Gilded Rose
-- Répétition avec contraintes
-- **Durée** : 6-8h par jour
+### Algorithmes
 
-### [Jour 5 : Consolidation & Mock Interview](./day5.md)
-**Objectif** : Valider l'acquis, simuler les conditions réelles
-- Refactoring sous contraintes
-- Mock interview chronométré
-- Débriefing et axes d'amélioration
-- **Durée** : 3-4h
+- **[Karate Chop](./katas/karate_chop.md)** - Recherche binaire à implémenter de 5 façons différentes
 
-## 📚 Ressources
+## Structure
 
-### Repositories Principaux
-- [Shodo Code Retreat](https://shodo-nantes.github.io/code-retreat/)
-- [Kata Starters](https://github.com/shodo-nantes/kata-starters)
+Chaque kata contient :
+- Les règles complètes
+- Des cas de test avec données
+- Des exemples concrets (patterns, séquences)
 
-### Katas Prioritaires
-1. **Mars Rover** ⭐⭐⭐ (très probable)
-2. **Game of Life** ⭐⭐
-3. **String Calculator** ⭐⭐ (bon pour débuter)
-4. **Tennis** ⭐
-5. **Sailboat** ⭐
-6. **Gilded Rose** ⭐ (refactoring)
+## Utilisation
 
-### Documentation Go
-- [Go by Example](https://gobyexample.com/)
-- [Testing package](https://pkg.go.dev/testing)
-- [Testify](https://github.com/stretchr/testify)
-
-## 🎓 Principes Clés à Retenir
-
-### Ce qui est Évalué
-- ✅ **Démarche TDD** : Red → Green → Refactor
-- ✅ **Baby steps** : avancer par petits incréments
-- ✅ **Clean Code** : nommage, lisibilité, simplicité
-- ✅ **Communication** : expliquer sa démarche
-- ✅ **Refactoring** : améliorer continuellement
-
-### Ce qui n'est PAS Évalué (ou moins)
-- ❌ Performance optimale
-- ❌ Solution complète et exhaustive
-- ❌ Connaissance de tous les patterns avancés
-
-## 💡 Conseils Généraux
-
-### Pendant l'Entraînement
-1. **Chronométrez-vous** : visez 45-60min par kata
-2. **Recommencez** : refaire un kata 2-3 fois est normal
-3. **Verbalisez** : parlez à voix haute pendant que vous codez
-4. **Commencez simple** : le test le plus simple possible
-5. **Refactorez tôt** : dès que vous voyez de la duplication
-
-### Le Jour J
-1. **Posez des questions** : clarifiez les specs
-2. **Proposez un plan** : "je vais commencer par..."
-3. **Tests d'abord** : toujours
-4. **Itérez visiblement** : montrez votre processus de pensée
-5. **Restez calme** : mieux vaut un code simple qui marche qu'un code complexe incomplet
-
-## 📊 Auto-Évaluation
-
-Après chaque kata, évaluez-vous sur ces critères (1-5) :
-
-| Critère | Score | Notes |
-|---------|-------|-------|
-| J'ai commencé par un test | /5 | |
-| J'ai fait des baby steps | /5 | |
-| Mon code est lisible | /5 | |
-| J'ai refactoré régulièrement | /5 | |
-| J'ai terminé dans les temps | /5 | |
-
-**Score cible** : 20/25 minimum
-
-## 🚀 Comment Utiliser ce Guide
-
-1. **Suivez l'ordre** : Jour 1 → 2 → 3-4 → 5
-2. **Adaptez le rythme** : selon votre disponibilité
-3. **Documentez** : prenez des notes dans chaque fichier
-4. **Pratiquez** : plus que lire, FAIRE
-5. **Répétez** : la répétition crée l'automatisme
-
-## 📝 Tracking de Progression
-
-```markdown
-### Jour 1 - MACRO
-- [ ] Lecture philosophie Software Craftsmanship (30min)
-- [ ] Tour d'horizon des katas (1h)
-- [ ] Identification des patterns (1h)
-- [ ] Notes sur critères d'évaluation (30min)
-
-### Jour 2 - MEZZO
-- [ ] Étude patterns techniques (1h)
-- [ ] Setup projet Go + tests (30min)
-- [ ] String Calculator guidé (1h)
-- [ ] Tennis guidé (1h30)
-
-### Jours 3-4 - MICRO
-- [ ] Mars Rover - tentative 1
-- [ ] Mars Rover - tentative 2
-- [ ] Mars Rover - tentative 3
-- [ ] Game of Life - tentative 1
-- [ ] Game of Life - tentative 2
-- [ ] Sailboat - tentative 1
-
-### Jour 5 - CONSOLIDATION
-- [ ] Mars Rover sous contrainte "no if"
-- [ ] Mock interview chronométré
-- [ ] Débriefing personnel
-```
-
----
-
-**Prêt à commencer ?** → [Jour 1 : Comprendre le Contexte](./day1.md)
-
-**Questions ?** N'hésite pas à adapter ce programme selon tes besoins et contraintes !
+Choisir un kata, lire les règles, implémenter en TDD (Test-Driven Development).
