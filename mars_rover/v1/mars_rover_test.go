@@ -1,4 +1,4 @@
-package mars_rover
+package v1
 
 import (
 	"testing"
