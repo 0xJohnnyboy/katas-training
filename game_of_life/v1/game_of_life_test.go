@@ -1,4 +1,4 @@
-package game_of_life
+package v1
 
 import (
 	// "fmt"
@@ -134,15 +134,14 @@ func TestNextGeneration(t *testing.T) {
 			grid.Toggle(p.X, p.Y)
 		}
 
-
 		next := grid.NextGeneration()
 		for range 3 {
 			next = next.NextGeneration()
 		}
 
 		for _, p := range positions {
-			if !next.IsAlive(p.X + 1, p.Y + 1) {
-				t.Errorf("glider should have moved 1 step diagonally to the bottom right, (%d, %d) cell expected to be alive, was dead", p.X + 1, p.Y + 1)
+			if !next.IsAlive(p.X+1, p.Y+1) {
+				t.Errorf("glider should have moved 1 step diagonally to the bottom right, (%d, %d) cell expected to be alive, was dead", p.X+1, p.Y+1)
 			}
 		}
 	})

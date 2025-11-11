@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	gol "katas/game_of_life"
+	gol "katas/game_of_life/v1"
 )
 
 func main() {

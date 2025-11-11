@@ -1,4 +1,4 @@
-package game_of_life
+package v1
 
 type Position struct {
 	X int
