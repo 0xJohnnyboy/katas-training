@@ -26,6 +26,14 @@ Collection de katas classiques du Software Craftsmanship avec règles et cas de 
 
 - **[Karate Chop](./katas/karate_chop.md)** - Recherche binaire à implémenter de 5 façons différentes
 
+### Concurrence (Goroutines)
+
+- **[Prime Sieve](./katas/prime_sieve.md)** - Crible d'Ératosthène avec pipeline de goroutines
+- **[Worker Pool](./katas/worker_pool.md)** - Pool de workers pour traiter des jobs en parallèle
+- **[Web Crawler](./katas/web_crawler.md)** - Crawler concurrent avec gestion d'URLs visitées
+- **[Chat Server](./katas/chat_server.md)** - Serveur de chat avec clients et rooms
+- **[Bank Account](./katas/bank_account.md)** - Compte bancaire thread-safe avec transfers
+
 ## Structure
 
 Chaque kata contient :
