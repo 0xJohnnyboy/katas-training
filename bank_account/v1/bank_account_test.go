@@ -5,15 +5,39 @@ import (
 	"testing"
 )
 
-type EventError struct {
-	ET  Event
+type DWTestCase struct {
+	desc            string
+	deposits        []int
+	withdrawals     []int
+	overdraft       int
+	eventError      *ErrorMock
+	expectedBalance int
+}
+
+type TxTestCase struct {
+	desc                string
+	transactions        []TxMock
+	expectedBalanceAcc1 int
+	expectedBalanceAcc2 int
+	expectedBalanceAcc3 int
+}
+
+type ErrorMock struct {
+	evt Event
 	err error
 }
 
-func checkError(t *testing.T, got error, expected *EventError, eventType Event) {
+type TxMock struct {
+	from   *Account
+	to     *Account
+	amount int
+	err    error
+}
+
+func checkError(t *testing.T, got error, expected *ErrorMock, evt Event) {
 	t.Helper()
 
-	if expected != nil && expected.ET == eventType {
+	if expected != nil && expected.evt == evt {
 		if got != expected.err {
 			t.Errorf("Expected %v, got %v", expected.err, got)
 		}
@@ -25,21 +49,14 @@ func checkError(t *testing.T, got error, expected *EventError, eventType Event) 
 }
 
 func TestBankAccount(t *testing.T) {
-	depositWithdrawTestCases := []struct {
-		desc            string
-		deposits        []int
-		withdrawals     []int
-		overdraft       int
-		eventError      *EventError
-		expectedBalance int
-	}{
+	depositWithdrawTestCases := []DWTestCase{
 		{"0 case", []int{}, []int{}, 0, nil, 0},
-		{"unauthorized overdraft", []int{}, []int{10}, 0, &EventError{Withdrawal, ExceedingOverdraftError}, 0},
+		{"unauthorized overdraft", []int{}, []int{10}, 0, &ErrorMock{Withdrawal, ExceedingOverdraftError}, 0},
 		{"authorized negative balance", []int{}, []int{10}, -50, nil, -10},
-		{"authorized positive overdraft", []int{}, []int{}, 50, &EventError{UpdateOverdraft, ForbiddenPositiveOverdraftError}, 0},
+		{"authorized positive overdraft", []int{}, []int{}, 50, &ErrorMock{UpdateOverdraft, ForbiddenPositiveOverdraftError}, 0},
 		{"one deposit", []int{100}, []int{}, 0, nil, 100},
-		{"negative deposit", []int{-50}, []int{}, 0, &EventError{Deposit, ForbiddenNegativeDepositError}, 0},
-		{"negative withdrawal", []int{100}, []int{-10}, 0, &EventError{Withdrawal, ForbiddenNegativeWithdrawalError}, 100},
+		{"negative deposit", []int{-50}, []int{}, 0, &ErrorMock{Deposit, ForbiddenNegativeDepositError}, 0},
+		{"negative withdrawal", []int{100}, []int{-10}, 0, &ErrorMock{Withdrawal, ForbiddenNegativeWithdrawalError}, 100},
 		{"one deposit + one withdrawal", []int{100}, []int{50}, 0, nil, 50},
 		{"multiple withdrawals", []int{100}, []int{10, 10, 10, 10, 10}, 0, nil, 50},
 		{"multiple deposits", []int{10, 10, 10, 10, 10}, []int{}, 0, nil, 50},
@@ -96,25 +113,12 @@ func TestBankAccount(t *testing.T) {
 		account2.Deposit(100)
 		account3.Deposit(20)
 
-		type TestTransaction struct {
-			from   *Account
-			to     *Account
-			amount int
-			err    error
-		}
-
-		testCases := []struct {
-			desc                string
-			transactions        []TestTransaction
-			expectedBalanceAcc1 int
-			expectedBalanceAcc2 int
-			expectedBalanceAcc3 int
-		}{
-			{"transfer $20 from 1 to 2", []TestTransaction{{account1, account2, 20, nil}}, 80, 100, 20},
-			{"transfer $50 from 3 to 2", []TestTransaction{{account3, account2, 50, ExceedingOverdraftError}}, 100, 100, 20},
-			{"transfer $50 from 1 to 1", []TestTransaction{{account1, account1, 50, ForbiddenSameAccountTransferError}}, 100, 100, 20},
-			{"negative transfer", []TestTransaction{{account1, account2, -50, ForbiddenNegativeTransferError}}, 100, 100, 20},
-			{"multiple transfers", []TestTransaction{
+		testCases := []TxTestCase{
+			{"transfer $20 from 1 to 2", []TxMock{{account1, account2, 20, nil}}, 80, 100, 20},
+			{"transfer $50 from 3 to 2", []TxMock{{account3, account2, 50, ExceedingOverdraftError}}, 100, 100, 20},
+			{"transfer $50 from 1 to 1", []TxMock{{account1, account1, 50, ForbiddenSameAccountTransferError}}, 100, 100, 20},
+			{"negative transfer", []TxMock{{account1, account2, -50, ForbiddenNegativeTransferError}}, 100, 100, 20},
+			{"multiple transfers", []TxMock{
 				{account1, account2, 10, nil},                     // 90 110 20
 				{account2, account3, 10, nil},                     // 90 100 30
 				{account3, account1, 30, nil},                     // 120 100 0
@@ -129,7 +133,7 @@ func TestBankAccount(t *testing.T) {
 
 				for _, tx := range tc.transactions {
 					wg.Add(1)
-					go func(tx TestTransaction) {
+					go func(tx TxMock) {
 						defer wg.Done()
 						err := tx.from.Transfer(tx.to, tx.amount)
 
