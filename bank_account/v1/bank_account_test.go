@@ -113,6 +113,14 @@ func TestBankAccount(t *testing.T) {
 			{"transfer $20 from 1 to 2", []TestTransaction{{account1, account2, 20, nil}}, 80, 100, 20},
 			{"transfer $50 from 3 to 2", []TestTransaction{{account3, account2, 50, ExceedingOverdraftError}}, 100, 100, 20},
 			{"transfer $50 from 1 to 1", []TestTransaction{{account1, account1, 50, ForbiddenSameAccountTransferError}}, 100, 100, 20},
+			{"negative transfer", []TestTransaction{{account1, account2, -50, ForbiddenNegativeTransferError}}, 100, 100, 20},
+			{"multiple transfers", []TestTransaction{
+				{account1, account2, 10, nil},                     // 90 110 20
+				{account2, account3, 10, nil},                     // 90 100 30
+				{account3, account1, 30, nil},                     // 120 100 0
+				{account3, account2, 30, ExceedingOverdraftError}, // 120 100 0
+				{account1, account3, 10, nil},                     // 110 100 10
+			}, 110, 100, 10},
 		}
 
 		for _, tc := range testCases {

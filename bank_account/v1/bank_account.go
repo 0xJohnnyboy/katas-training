@@ -111,7 +111,7 @@ func (a *Account) Transfer(to *Account, amount int) error {
 	tx := Tx{Transfer, a, to, amount}
 
 	a.transactions = append(a.transactions, tx)
-	to.transactions = append(a.transactions, tx)
+	to.transactions = append(to.transactions, tx)
 
 	return nil
 }
@@ -119,6 +119,15 @@ func (a *Account) Transfer(to *Account, amount int) error {
 func (a *Account) Balance() int {
 	a.mu.RLock()
 	defer a.mu.RUnlock()
+
+	balance := a.getBalance()
+	tx := Tx{CheckBalance, nil, nil, 0}
+	a.transactions = append(a.transactions, tx)
+
+	return balance
+}
+
+func (a *Account) getBalance() int {
 	sum := 0
 
 	for _, tx := range a.transactions {
@@ -133,24 +142,6 @@ func (a *Account) Balance() int {
 			} else {
 				sum += tx.Amount
 			}
-		}
-	}
-
-	tx := Tx{CheckBalance, nil, nil, 0}
-	a.transactions = append(a.transactions, tx)
-
-	return sum
-}
-
-func (a *Account) getBalance() int {
-	sum := 0
-
-	for _, e := range a.transactions {
-		switch e.Event {
-		case Deposit:
-			sum += e.Amount
-		case Withdrawal:
-			sum -= e.Amount
 		}
 	}
 
