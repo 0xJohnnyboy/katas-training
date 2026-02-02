@@ -26,6 +26,10 @@ Collection de katas classiques du Software Craftsmanship avec règles et cas de 
 
 - **[Karate Chop](./katas/karate_chop.md)** - Recherche binaire à implémenter de 5 façons différentes
 
+### Refactoring
+
+- **[Movie Rental](https://gitlab.com/azae/craft/movie-rental/movie-rental-go)** - Refactoring classique de Martin Fowler : ajouter HTML statement
+
 ### Concurrence (Goroutines)
 
 - **[Prime Sieve](./katas/prime_sieve.md)** - Crible d'Ératosthène avec pipeline de goroutines
@@ -44,3 +48,13 @@ Chaque kata contient :
 ## Utilisation
 
 Choisir un kata, lire les règles, implémenter en TDD (Test-Driven Development).
+
+### Initialiser un kata externe
+
+Pour les katas hébergés ailleurs (comme Movie Rental) :
+
+```bash
+make init-kata KATA=movie_rental
+```
+
+Cela crée automatiquement `movie_rental/v1/` (ou v2, v3... selon les versions existantes).
