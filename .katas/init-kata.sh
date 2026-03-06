@@ -13,12 +13,16 @@ fi
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 ARCHIVE="$SCRIPT_DIR/${KATA_NAME}.tar.gz"
+STARTER_DIR="$SCRIPT_DIR/${KATA_NAME}"
 KATA_DIR="$PROJECT_ROOT/${KATA_NAME}"
 
-if [ ! -f "$ARCHIVE" ]; then
-    echo "Error: Archive not found: $ARCHIVE"
+if [ ! -f "$ARCHIVE" ] && [ ! -d "$STARTER_DIR" ]; then
+    echo "Error: Starter not found for '$KATA_NAME' (expected archive or directory in .katas)"
     echo "Available katas:"
-    ls -1 "$SCRIPT_DIR"/*.tar.gz 2>/dev/null | xargs -n1 basename | sed 's/.tar.gz$//' || echo "  (none)"
+    (
+        ls -1 "$SCRIPT_DIR"/*.tar.gz 2>/dev/null | xargs -n1 basename | sed 's/.tar.gz$//'
+        ls -1d "$SCRIPT_DIR"/*/ 2>/dev/null | xargs -n1 basename
+    ) | sort -u || echo "  (none)"
     exit 1
 fi
 
@@ -37,10 +41,16 @@ TARGET_DIR="$KATA_DIR/$VERSION"
 echo "Initializing $KATA_NAME/$VERSION..."
 
 mkdir -p "$TARGET_DIR"
-tar xzf "$ARCHIVE" -C "$TARGET_DIR" --strip-components=1
+if [ -f "$ARCHIVE" ]; then
+    tar xzf "$ARCHIVE" -C "$TARGET_DIR" --strip-components=1
+else
+    cp -R "$STARTER_DIR"/. "$TARGET_DIR"
+fi
 
-# Replace package name in Go files
-find "$TARGET_DIR" -name "*.go" -type f -exec sed -i "s/package main/package $VERSION/g" {} \;
+# Replace package name in Go files (except CLI projects with func main)
+if ! rg -n --glob '*.go' '^func main\(\)' "$TARGET_DIR" >/dev/null 2>&1; then
+    find "$TARGET_DIR" -name "*.go" -type f -exec sed -i "s/package main/package $VERSION/g" {} \;
+fi
 find "$TARGET_DIR" -name "*.go" -type f -exec sed -i "s/package rental/package $VERSION/g" {} \;
 
 echo "✓ Created $TARGET_DIR"

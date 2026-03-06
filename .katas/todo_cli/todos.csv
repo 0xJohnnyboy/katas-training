@@ -1,0 +1,200 @@
+1,2025-01-01,Prepare sprint planning,Pair with ops to validate deployment steps for ops-runbook,false
+2,2025-02-02,Implement login rate limiter,Discuss tradeoffs with product manager for import-pipeline,false
+3,2025-03-03,Fix checkout tax rounding,Verify behavior on staging and production for customer-portal,false
+4,2025-04-04,Review onboarding checklist,Collect metrics before and after the change for partner-sync,true
+5,2025-05-05,Draft Q2 roadmap,Make sure QA has reproducible test data for auth-service,false
+6,2025-06-06,Clean stale feature flags,Reproduce bug with minimal local fixture for admin-dashboard,false
+7,2025-07-07,Write release notes,Coordinate release window with finance for mobile-app,false
+8,2025-08-08,Investigate slow report query,Prepare post release monitoring checklist for reporting-api,true
+9,2025-09-09,Add retry on webhook sender,Customer reported issue on production workspace for email-worker,true
+10,2025-10-10,Refactor invoice validator,Capture edge cases and update docs for billing-service,false
+11,2025-11-11,Document backup procedure,Check logs and compare with previous week for ops-runbook,false
+12,2025-12-12,Finalize hiring scorecard,Prepare small incremental changes first for import-pipeline,true
+13,2025-01-13,Update API pagination,Validate with one pilot customer account for customer-portal,false
+14,2025-02-14,Patch SSO callback bug,Avoid breaking existing CLI contract for partner-sync,false
+15,2025-03-15,Plan customer interview,Investigate race condition under load for auth-service,false
+16,2025-04-16,Verify nightly ETL,Clarify expected behavior for empty fields for admin-dashboard,true
+17,2025-05-17,Migrate alert channel,Need clear acceptance criteria and rollback plan for mobile-app,false
+18,2025-06-18,Improve mobile empty state,Follow up after standup with action items for reporting-api,true
+19,2025-07-19,Audit admin permissions,Track remaining risks in shared document for email-worker,false
+20,2025-08-20,Sync product glossary,Confirm owner and due date in planning board for billing-service,true
+21,2025-09-21,Tune cache invalidation,Align naming with existing conventions for ops-runbook,false
+22,2025-10-22,Prepare demo script,Keep migration idempotent and reversible for import-pipeline,false
+23,2025-11-23,Reduce image upload size,Share implementation notes in team channel for customer-portal,false
+24,2025-12-24,Create regression checklist,Review analytics event consistency for partner-sync,true
+25,2025-01-25,Schedule database vacuum,Coordinate with support team before release for auth-service,false
+26,2025-02-26,Prepare sprint planning,Pair with ops to validate deployment steps for admin-dashboard,false
+27,2025-03-27,Implement login rate limiter,Discuss tradeoffs with product manager for mobile-app,true
+28,2025-04-28,Fix checkout tax rounding,Verify behavior on staging and production for reporting-api,true
+29,2025-05-01,Review onboarding checklist,Collect metrics before and after the change for email-worker,false
+30,2025-06-02,Draft Q2 roadmap,Make sure QA has reproducible test data for billing-service,false
+31,2025-07-03,Clean stale feature flags,Reproduce bug with minimal local fixture for ops-runbook,false
+32,2025-08-04,Write release notes,Coordinate release window with finance for import-pipeline,true
+33,2025-09-05,Investigate slow report query,Prepare post release monitoring checklist for customer-portal,false
+34,2025-10-06,Add retry on webhook sender,Customer reported issue on production workspace for partner-sync,false
+35,2025-11-07,Refactor invoice validator,Capture edge cases and update docs for auth-service,false
+36,2025-12-08,Document backup procedure,Check logs and compare with previous week for admin-dashboard,true
+37,2025-01-09,Finalize hiring scorecard,Prepare small incremental changes first for mobile-app,false
+38,2025-02-10,Update API pagination,Validate with one pilot customer account for reporting-api,false
+39,2025-03-11,Patch SSO callback bug,Avoid breaking existing CLI contract for email-worker,false
+40,2025-04-12,Plan customer interview,Investigate race condition under load for billing-service,true
+41,2025-05-13,Verify nightly ETL,Clarify expected behavior for empty fields for ops-runbook,false
+42,2025-06-14,Migrate alert channel,Need clear acceptance criteria and rollback plan for import-pipeline,false
+43,2025-07-15,Improve mobile empty state,Follow up after standup with action items for customer-portal,false
+44,2025-08-16,Audit admin permissions,Track remaining risks in shared document for partner-sync,true
+45,2025-09-17,Sync product glossary,Confirm owner and due date in planning board for auth-service,true
+46,2025-10-18,Tune cache invalidation,Align naming with existing conventions for admin-dashboard,false
+47,2025-11-19,Prepare demo script,Keep migration idempotent and reversible for mobile-app,false
+48,2025-12-20,Reduce image upload size,Share implementation notes in team channel for reporting-api,true
+49,2025-01-21,Create regression checklist,Review analytics event consistency for email-worker,false
+50,2025-02-22,Schedule database vacuum,Coordinate with support team before release for billing-service,false
+51,2025-03-23,Prepare sprint planning,Pair with ops to validate deployment steps for ops-runbook,false
+52,2025-04-24,Implement login rate limiter,Discuss tradeoffs with product manager for import-pipeline,true
+53,2025-05-25,Fix checkout tax rounding,Verify behavior on staging and production for customer-portal,false
+54,2025-06-26,Review onboarding checklist,Collect metrics before and after the change for partner-sync,true
+55,2025-07-27,Draft Q2 roadmap,Make sure QA has reproducible test data for auth-service,false
+56,2025-08-28,Clean stale feature flags,Reproduce bug with minimal local fixture for admin-dashboard,true
+57,2025-09-01,implemenent saved search presets,Coordinate release window with finance for mobile-app,false
+58,2025-10-02,Investigate slow report query,Prepare post release monitoring checklist for reporting-api,false
+59,2025-11-03,Add retry on webhook sender,Customer reported issue on production workspace for email-worker,false
+60,2025-12-04,Refactor invoice validator,Capture edge cases and update docs for billing-service,true
+61,2025-01-05,Document backup procedure,Check logs and compare with previous week for ops-runbook,false
+62,2025-02-06,Finalize hiring scorecard,Prepare small incremental changes first for import-pipeline,false
+63,2025-03-07,Update API pagination,Validate with one pilot customer account for customer-portal,true
+64,2025-04-08,Patch SSO callback bug,Avoid breaking existing CLI contract for partner-sync,true
+65,2025-05-09,Plan customer interview,Investigate race condition under load for auth-service,false
+66,2025-06-10,Verify nightly ETL,Clarify expected behavior for empty fields for admin-dashboard,false
+67,2025-07-11,Migrate alert channel,Need clear acceptance criteria and rollback plan for mobile-app,false
+68,2025-08-12,Improve mobile empty state,Follow up after standup with action items for reporting-api,true
+69,2025-09-13,Audit admin permissions,Track remaining risks in shared document for email-worker,false
+70,2025-10-14,Sync product glossary,Confirm owner and due date in planning board for billing-service,false
+71,2025-11-15,Tune cache invalidation,Align naming with existing conventions for ops-runbook,false
+72,2025-12-16,Prepare demo script,Keep migration idempotent and reversible for import-pipeline,true
+73,2025-01-17,Reduce image upload size,Share implementation notes in team channel for customer-portal,false
+74,2025-02-18,Create regression checklist,Review analytics event consistency for partner-sync,false
+75,2025-03-19,Schedule database vacuum,Coordinate with support team before release for auth-service,false
+76,2025-04-20,Prepare sprint planning,Pair with ops to validate deployment steps for admin-dashboard,true
+77,2025-05-21,Implement login rate limiter,Discuss tradeoffs with product manager for mobile-app,false
+78,2025-06-22,Fix checkout tax rounding,Verify behavior on staging and production for reporting-api,false
+79,2025-07-23,Review onboarding checklist,Collect metrics before and after the change for email-worker,false
+80,2025-08-24,Draft Q2 roadmap,Make sure QA has reproducible test data for billing-service,true
+81,2025-09-25,Clean stale feature flags,Reproduce bug with minimal local fixture for ops-runbook,true
+82,2025-10-26,Write release notes,Coordinate release window with finance for import-pipeline,false
+83,2025-11-27,Investigate slow report query,Prepare post release monitoring checklist for customer-portal,false
+84,2025-12-28,Add retry on webhook sender,Customer reported issue on production workspace for partner-sync,true
+85,2025-01-01,Refactor invoice validator,Capture edge cases and update docs for auth-service,false
+86,2025-02-02,Document backup procedure,Check logs and compare with previous week for admin-dashboard,false
+87,2025-03-03,Finalize hiring scorecard,Prepare small incremental changes first for mobile-app,false
+88,2025-04-04,Update API pagination,Validate with one pilot customer account for reporting-api,true
+89,2025-05-05,Patch SSO callback bug,Avoid breaking existing CLI contract for email-worker,false
+90,2025-06-06,Plan customer interview,Investigate race condition under load for billing-service,true
+91,2025-07-07,Verify nightly ETL,Clarify expected behavior for empty fields for ops-runbook,false
+92,2025-08-08,Migrate alert channel,Need clear acceptance criteria and rollback plan for import-pipeline,true
+93,2025-09-09,Improve mobile empty state,Follow up after standup with action items for customer-portal,false
+94,2025-10-10,Audit admin permissions,Track remaining risks in shared document for partner-sync,false
+95,2025-11-11,Sync product glossary,Confirm owner and due date in planning board for auth-service,false
+96,2025-12-12,Tune cache invalidation,Align naming with existing conventions for admin-dashboard,true
+97,2025-01-13,Prepare demo script,Keep migration idempotent and reversible for mobile-app,false
+98,2025-02-14,Reduce image upload size,Share implementation notes in team channel for reporting-api,false
+99,2025-03-15,Create regression checklist,Review analytics event consistency for email-worker,true
+100,2025-04-16,Schedule database vacuum,Coordinate with support team before release for billing-service,true
+101,2025-05-17,Prepare sprint planning,Pair with ops to validate deployment steps for ops-runbook,false
+102,2025-06-18,Implement login rate limiter,Discuss tradeoffs with product manager for import-pipeline,false
+103,2025-07-19,Fix checkout tax rounding,Verify behavior on staging and production for customer-portal,false
+104,2025-08-20,Review onboarding checklist,Collect metrics before and after the change for partner-sync,true
+105,2025-09-21,Draft Q2 roadmap,Make sure QA has reproducible test data for auth-service,false
+106,2025-10-22,Clean stale feature flags,Reproduce bug with minimal local fixture for admin-dashboard,false
+107,2025-11-23,Write release notes,Coordinate release window with finance for mobile-app,false
+108,2025-12-24,Investigate slow report query,Prepare post release monitoring checklist for reporting-api,true
+109,2025-01-25,Add retry on webhook sender,Customer reported issue on production workspace for email-worker,false
+110,2025-02-26,Refactor invoice validator,Capture edge cases and update docs for billing-service,false
+111,2025-03-27,Document backup procedure,Check logs and compare with previous week for ops-runbook,false
+112,2025-04-28,Finalize hiring scorecard,Prepare small incremental changes first for import-pipeline,true
+113,2025-05-01,Update API pagination,Validate with one pilot customer account for customer-portal,false
+114,2025-06-02,Patch SSO callback bug,Avoid breaking existing CLI contract for partner-sync,false
+115,2025-07-03,Plan customer interview,Investigate race condition under load for auth-service,false
+116,2025-08-04,Verify nightly ETL,Clarify expected behavior for empty fields for admin-dashboard,true
+117,2025-09-05,Migrate alert channel,Need clear acceptance criteria and rollback plan for mobile-app,true
+118,2025-10-06,Improve mobile empty state,Follow up after standup with action items for reporting-api,false
+119,2025-11-07,Audit admin permissions,Track remaining risks in shared document for email-worker,false
+120,2025-12-08,Sync product glossary,Confirm owner and due date in planning board for billing-service,true
+121,2026-01-09,Tune cache invalidation,Align naming with existing conventions for ops-runbook,false
+122,2026-02-10,Prepare demo script,Keep migration idempotent and reversible for import-pipeline,false
+123,2026-03-11,Reduce image upload size,Share implementation notes in team channel for customer-portal,false
+124,2026-04-12,Create regression checklist,Review analytics event consistency for partner-sync,true
+125,2026-05-13,Schedule database vacuum,Coordinate with support team before release for auth-service,false
+126,2026-06-14,Prepare sprint planning,Pair with ops to validate deployment steps for admin-dashboard,true
+127,2026-07-15,Implement login rate limiter,Discuss tradeoffs with product manager for mobile-app,false
+128,2026-08-16,Fix checkout tax rounding,Verify behavior on staging and production for reporting-api,true
+129,2026-09-17,Review onboarding checklist,Collect metrics before and after the change for email-worker,false
+130,2026-10-18,Draft Q2 roadmap,Make sure QA has reproducible test data for billing-service,false
+131,2026-11-19,Clean stale feature flags,Reproduce bug with minimal local fixture for ops-runbook,false
+132,2026-12-20,Write release notes,Coordinate release window with finance for import-pipeline,true
+133,2026-01-21,Investigate slow report query,Prepare post release monitoring checklist for customer-portal,false
+134,2026-02-22,Add retry on webhook sender,Customer reported issue on production workspace for partner-sync,false
+135,2026-03-23,Refactor invoice validator,Capture edge cases and update docs for auth-service,true
+136,2026-04-24,Document backup procedure,Check logs and compare with previous week for admin-dashboard,true
+137,2026-05-25,Finalize hiring scorecard,Prepare small incremental changes first for mobile-app,false
+138,2026-06-26,Update API pagination,Validate with one pilot customer account for reporting-api,false
+139,2026-07-27,Patch SSO callback bug,Avoid breaking existing CLI contract for email-worker,false
+140,2026-08-28,Plan customer interview,Investigate race condition under load for billing-service,true
+141,2026-09-01,Verify nightly ETL,Clarify expected behavior for empty fields for ops-runbook,false
+142,2026-10-02,Migrate alert channel,Need clear acceptance criteria and rollback plan for import-pipeline,false
+143,2026-11-03,Improve mobile empty state,Follow up after standup with action items for customer-portal,false
+144,2026-12-04,Audit admin permissions,Track remaining risks in shared document for partner-sync,true
+145,2026-01-05,Sync product glossary,Confirm owner and due date in planning board for auth-service,false
+146,2026-02-06,Tune cache invalidation,Align naming with existing conventions for admin-dashboard,false
+147,2026-03-07,Prepare demo script,Keep migration idempotent and reversible for mobile-app,false
+148,2026-04-08,Reduce image upload size,Share implementation notes in team channel for reporting-api,true
+149,2026-05-09,Create regression checklist,Review analytics event consistency for email-worker,false
+150,2026-06-10,Schedule database vacuum,Coordinate with support team before release for billing-service,false
+151,2026-07-11,Prepare sprint planning,Pair with ops to validate deployment steps for ops-runbook,false
+152,2026-08-12,Implement login rate limiter,Discuss tradeoffs with product manager for import-pipeline,true
+153,2026-09-13,Fix checkout tax rounding,Verify behavior on staging and production for customer-portal,true
+154,2026-10-14,Review onboarding checklist,Collect metrics before and after the change for partner-sync,false
+155,2026-11-15,Draft Q2 roadmap,Make sure QA has reproducible test data for auth-service,false
+156,2026-12-16,Clean stale feature flags,Reproduce bug with minimal local fixture for admin-dashboard,true
+157,2026-01-17,Write release notes,Coordinate release window with finance for mobile-app,false
+158,2026-02-18,Investigate slow report query,Prepare post release monitoring checklist for reporting-api,false
+159,2026-03-19,Add retry on webhook sender,Customer reported issue on production workspace for email-worker,false
+160,2026-04-20,Refactor invoice validator,Capture edge cases and update docs for billing-service,true
+161,2026-05-21,Document backup procedure,Check logs and compare with previous week for ops-runbook,false
+162,2026-06-22,Finalize hiring scorecard,Prepare small incremental changes first for import-pipeline,true
+163,2026-07-23,Update API pagination,Validate with one pilot customer account for customer-portal,false
+164,2026-08-24,Patch SSO callback bug,Avoid breaking existing CLI contract for partner-sync,true
+165,2026-09-25,Plan customer interview,Investigate race condition under load for auth-service,false
+166,2026-10-26,Verify nightly ETL,Clarify expected behavior for empty fields for admin-dashboard,false
+167,2026-11-27,Migrate alert channel,Need clear acceptance criteria and rollback plan for mobile-app,false
+168,2026-12-28,Improve mobile empty state,Follow up after standup with action items for reporting-api,true
+169,2026-01-01,Audit admin permissions,Track remaining risks in shared document for email-worker,false
+170,2026-02-02,Sync product glossary,Confirm owner and due date in planning board for billing-service,false
+171,2026-03-03,Tune cache invalidation,Align naming with existing conventions for ops-runbook,true
+172,2026-04-04,Prepare demo script,Keep migration idempotent and reversible for import-pipeline,true
+173,2026-05-05,Reduce image upload size,Share implementation notes in team channel for customer-portal,false
+174,2026-06-06,Create regression checklist,Review analytics event consistency for partner-sync,false
+175,2026-07-07,Schedule database vacuum,Coordinate with support team before release for auth-service,false
+176,2026-08-08,Prepare sprint planning,Pair with ops to validate deployment steps for admin-dashboard,true
+177,2026-09-09,Implement login rate limiter,Discuss tradeoffs with product manager for mobile-app,false
+178,2026-10-10,Fix checkout tax rounding,Verify behavior on staging and production for reporting-api,false
+179,2026-11-11,Review onboarding checklist,Collect metrics before and after the change for email-worker,false
+180,2026-12-12,Draft Q2 roadmap,Make sure QA has reproducible test data for billing-service,true
+181,2026-01-13,Clean stale feature flags,Reproduce bug with minimal local fixture for ops-runbook,false
+182,2026-02-14,Write release notes,Coordinate release window with finance for import-pipeline,false
+183,2026-03-15,Investigate slow report query,Prepare post release monitoring checklist for customer-portal,false
+184,2026-04-16,Add retry on webhook sender,Customer reported issue on production workspace for partner-sync,true
+185,2026-05-17,Refactor invoice validator,Capture edge cases and update docs for auth-service,false
+186,2026-06-18,Document backup procedure,Check logs and compare with previous week for admin-dashboard,false
+187,2026-07-19,Finalize hiring scorecard,Prepare small incremental changes first for mobile-app,false
+188,2026-08-20,Update API pagination,Validate with one pilot customer account for reporting-api,true
+189,2026-09-21,Patch SSO callback bug,Avoid breaking existing CLI contract for email-worker,true
+190,2026-10-22,Plan customer interview,Investigate race condition under load for billing-service,false
+191,2026-11-23,Verify nightly ETL,Clarify expected behavior for empty fields for ops-runbook,false
+192,2026-12-24,Migrate alert channel,Need clear acceptance criteria and rollback plan for import-pipeline,true
+193,2026-01-25,Improve mobile empty state,Follow up after standup with action items for customer-portal,false
+194,2026-02-26,Audit admin permissions,Track remaining risks in shared document for partner-sync,false
+195,2026-03-27,Sync product glossary,Confirm owner and due date in planning board for auth-service,false
+196,2026-04-28,Tune cache invalidation,Align naming with existing conventions for admin-dashboard,true
+197,2026-05-01,Prepare demo script,Keep migration idempotent and reversible for mobile-app,false
+198,2026-06-02,Reduce image upload size,Share implementation notes in team channel for reporting-api,true
+199,2026-07-03,Create regression checklist,Review analytics event consistency for email-worker,false
+200,2026-08-04,Schedule database vacuum,Coordinate with support team before release for billing-service,true

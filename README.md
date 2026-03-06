@@ -29,6 +29,7 @@ Collection de katas classiques du Software Craftsmanship avec règles et cas de 
 ### Refactoring
 
 - **[Movie Rental](https://gitlab.com/azae/craft/movie-rental/movie-rental-go)** - Refactoring classique de Martin Fowler : ajouter HTML statement
+- **Todo CLI** - CLI de gestion de tâches sur CSV, refactoring avant ajout d'une recherche avec filtres
 
 ### Concurrence (Goroutines)
 
@@ -49,12 +50,13 @@ Chaque kata contient :
 
 Choisir un kata, lire les règles, implémenter en TDD (Test-Driven Development).
 
-### Initialiser un kata externe
+### Initialiser un kata starter
 
-Pour les katas hébergés ailleurs (comme Movie Rental) :
+Pour les katas avec starter versionné :
 
 ```bash
 make init-kata KATA=movie_rental
+make init-kata KATA=todo_cli
 ```
 
-Cela crée automatiquement `movie_rental/v1/` (ou v2, v3... selon les versions existantes).
+Cela crée automatiquement `<kata>/v1/` (ou v2, v3... selon les versions existantes).
