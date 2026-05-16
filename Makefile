@@ -13,6 +13,7 @@ help:
 	@echo ""
 	@echo "Example:"
 	@echo "  make init-kata KATA=movie_rental"
+	@echo "  make init-kata KATA=gilded_rose"
 
 init-kata:
 	@./.katas/init-kata.sh $(KATA)

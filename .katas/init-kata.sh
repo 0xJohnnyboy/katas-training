@@ -15,6 +15,9 @@ PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 ARCHIVE="$SCRIPT_DIR/${KATA_NAME}.tar.gz"
 STARTER_DIR="$SCRIPT_DIR/${KATA_NAME}"
 KATA_DIR="$PROJECT_ROOT/${KATA_NAME}"
+if [ "$KATA_NAME" = "gilded_rose" ] && [ -d "$STARTER_DIR/go" ]; then
+    STARTER_DIR="$STARTER_DIR/go"
+fi
 
 if [ ! -f "$ARCHIVE" ] && [ ! -d "$STARTER_DIR" ]; then
     echo "Error: Starter not found for '$KATA_NAME' (expected archive or directory in .katas)"
@@ -49,9 +52,10 @@ fi
 
 # Replace package name in Go files (except CLI projects with func main)
 if ! rg -n --glob '*.go' '^func main\(\)' "$TARGET_DIR" >/dev/null 2>&1; then
-    find "$TARGET_DIR" -name "*.go" -type f -exec sed -i "s/package main/package $VERSION/g" {} \;
+    find "$TARGET_DIR" -name "*.go" -type f -exec sed -i.bak "s/package main/package $VERSION/g" {} \;
 fi
-find "$TARGET_DIR" -name "*.go" -type f -exec sed -i "s/package rental/package $VERSION/g" {} \;
+find "$TARGET_DIR" -name "*.go" -type f -exec sed -i.bak "s/package rental/package $VERSION/g" {} \;
+find "$TARGET_DIR" -name "*.bak" -type f -delete
 
 echo "✓ Created $TARGET_DIR"
 echo ""
